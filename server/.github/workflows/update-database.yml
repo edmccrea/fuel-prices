@@ -1,0 +1,15 @@
+name: Update Fuel Price Data
+
+on:
+  schedule:
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+
+  jobs:
+    update_symbol_list:
+      name: Update fuel prices periodically
+      runs-on: ubuntu-latest
+      timeout: 10 minutes
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
