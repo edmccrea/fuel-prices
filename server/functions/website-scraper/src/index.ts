@@ -1,9 +1,10 @@
 import "dotenv/config";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.SUPABASE_URL as string;
-const supabaseKey = process.env.SUPBASE_KEY as string;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_KEY!
+);
 
 import { getFormattedCirclekData } from "./websites/circlek";
 import { getFormattedIngoData } from "./websites/ingo";
@@ -136,6 +137,7 @@ const submitDataToDatabase = async (fuelPrices: any) => {
               difference: company[key].difference,
             },
           ]);
+        console.log(`Submitting ${key} for ${company}`);
       }
     }
   }
