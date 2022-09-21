@@ -137,7 +137,7 @@ const submitDataToDatabase = async (fuelPrices: any) => {
               difference: company[key].difference,
             },
           ]);
-        console.log(`Submitting ${key} for ${company}`);
+        console.log(`Submitting ${key} for ${company.name}`);
       }
     }
   }
