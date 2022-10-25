@@ -1,6 +1,8 @@
 <script lang="ts">
-  import { latestFuelData } from "../stores";
-  export let fuelType;
+  import { formatCompanyName } from "$lib/helpers/format-company-name";
+
+  export let fuelData;
+  export let currentFuelType: string;
 </script>
 
 <section>
@@ -15,15 +17,19 @@
       </tr>
     </thead>
     <tbody>
-      {#each $latestFuelData as company}
-        <tr class="company-row">
-          <td>{company.name}</td>
-          <td>{company.petrol.price}kr</td>
-          <td>{company.petrol.difference}kr</td>
-          <td>{company.petrol.lastUpdated}</td>
-          <td class="last-seven">Graph</td>
-        </tr>
-      {/each}
+      {#key currentFuelType}
+        {#each fuelData as company}
+          {#if company[currentFuelType]}
+            <tr class="company-row">
+              <td>{formatCompanyName(company.name)}</td>
+              <td>{company[currentFuelType].price}kr</td>
+              <td>{company[currentFuelType].difference}kr</td>
+              <td>{company[currentFuelType].lastUpdated}</td>
+              <td class="last-seven">Graph</td>
+            </tr>
+          {/if}
+        {/each}
+      {/key}
     </tbody>
   </table>
 </section>

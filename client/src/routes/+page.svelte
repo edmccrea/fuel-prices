@@ -1,13 +1,21 @@
-<script>
+<script lang="ts">
   import Button from "$lib/Button.svelte";
   import PriceTable from "$lib/PriceTable.svelte";
-  const fuelTypes = ["95", "Diesel", "98", "E85", "HVO"];
+  const fuelTypes = [
+    { displayName: "95", databaseName: "petrol" },
+    { displayName: "Diesel", databaseName: "diesel" },
+    { displayName: "98", databaseName: "petrolPlus" },
+    { displayName: "E85", databaseName: "ethanol" },
+    { displayName: "HVO", databaseName: "hvo" },
+  ];
 
-  let fuelName = "petrol";
+  $: currentFuelType = "petrol";
 
-  const changeFuelType = (e) => {
-    console.log(e);
+  const changeCurrentFuelType = (newFuelType: string) => {
+    currentFuelType = newFuelType;
   };
+
+  export let data;
 </script>
 
 <section>
@@ -19,11 +27,13 @@
   </div>
 
   <div class="table-buttons">
-    {#each fuelTypes as fuelName}
-      <Button on:click={changeFuelType}>{fuelName}</Button>
+    {#each fuelTypes as fuelType}
+      <Button on:click={() => changeCurrentFuelType(fuelType.databaseName)}
+        >{fuelType.displayName}</Button
+      >
     {/each}
   </div>
-  <PriceTable {fuelName} />
+  <PriceTable {currentFuelType} fuelData={data.latestDataBaseEntries} />
 </section>
 
 <style>
