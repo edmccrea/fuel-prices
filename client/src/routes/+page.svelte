@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { MappedFuelData } from "./+layout";
   import Button from "$lib/Button.svelte";
   import PriceTable from "$lib/PriceTable.svelte";
   const fuelTypes = [
@@ -15,7 +16,8 @@
     currentFuelType = newFuelType;
   };
 
-  export let data;
+  /** @type {import('./$types').PageData} */
+  export let data: MappedFuelData;
 </script>
 
 <section>
@@ -33,7 +35,7 @@
       >
     {/each}
   </div>
-  <PriceTable {currentFuelType} fuelData={data.latestDataBaseEntries} />
+  <PriceTable {currentFuelType} fuelData={data} />
 </section>
 
 <style>

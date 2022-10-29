@@ -1,7 +1,8 @@
 <script lang="ts">
+  import type { MappedFuelData } from "../routes/+layout";
   import { formatCompanyName } from "$lib/helpers/format-company-name";
 
-  export let fuelData;
+  export let fuelData: MappedFuelData;
   export let currentFuelType: string;
 </script>
 
@@ -18,13 +19,25 @@
     </thead>
     <tbody>
       {#key currentFuelType}
-        {#each fuelData as company}
-          {#if company[currentFuelType]}
+        {#each Object.keys(fuelData) as company}
+          {#if fuelData[company][currentFuelType].length}
             <tr class="company-row">
-              <td>{formatCompanyName(company.name)}</td>
-              <td>{company[currentFuelType].price}kr</td>
-              <td>{company[currentFuelType].difference}kr</td>
-              <td>{company[currentFuelType].lastUpdated}</td>
+              <td>{formatCompanyName(company)}</td>
+              <td
+                >{fuelData[company][currentFuelType][
+                  fuelData[company][currentFuelType].length - 1
+                ].price}kr</td
+              >
+              <td
+                >{fuelData[company][currentFuelType][
+                  fuelData[company][currentFuelType].length - 1
+                ].difference}kr</td
+              >
+              <td
+                >{fuelData[company][currentFuelType][
+                  fuelData[company][currentFuelType].length - 1
+                ].last_update}</td
+              >
               <td class="last-seven">Graph</td>
             </tr>
           {/if}
