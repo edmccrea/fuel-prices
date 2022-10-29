@@ -1,6 +1,8 @@
-<script></script>
+<script>
+  export let selected = false;
+</script>
 
-<button on:click>
+<button on:click class:selected>
   <slot>Button</slot>
 </button>
 
@@ -14,5 +16,11 @@
     min-width: 70px;
     font-weight: var(--font-weight-light);
     font-size: var(--text-sm);
+    transition: all 200ms ease;
+  }
+
+  button:hover,
+  .selected {
+    background-color: var(--color-grey);
   }
 </style>
