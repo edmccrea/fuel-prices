@@ -1,4 +1,6 @@
+import { latestFuelData } from "../stores";
 import { createClient } from "@supabase/supabase-js";
+
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL!,
   import.meta.env.VITE_SUPABASE_KEY!
@@ -9,7 +11,7 @@ interface RawFuelData {
   data: FuelEntry[];
 }
 
-interface FuelEntry {
+export interface FuelEntry {
   id: number;
   fuel_type: string;
   price: number;
@@ -79,5 +81,6 @@ export const load = async () => {
   };
 
   const mappedFuelData = mapFuelData(rawFuelDataMap);
+  latestFuelData.set(mappedFuelData);
   return mappedFuelData;
 };
