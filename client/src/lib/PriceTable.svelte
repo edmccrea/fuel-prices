@@ -29,7 +29,7 @@
         {#each Object.keys(fuelData) as company}
           {#if fuelData[company][currentFuelType].length}
             <tr class="company-row">
-              <td>{formatCompanyName(company)}</td>
+              <td><a href={`/${company}`}>{formatCompanyName(company)}</a></td>
               <td
                 ><a href={`/${company}`}
                   >{getLastIndex(fuelData[company][currentFuelType]).price}kr</a
@@ -70,13 +70,22 @@
     background-color: var(--color-secondary-light);
   }
 
+  thead td {
+    padding: 0.5rem 1rem;
+  }
+
   tbody {
     font-weight: var(--font-weight-light);
   }
 
   td {
-    padding: 0.5rem 1rem;
     border-bottom: 1px solid var(--color-light-grey);
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
   }
 
   .difference {
@@ -92,7 +101,7 @@
   }
 
   .company-row:hover {
-    background-color: var(--color-secondary-light);
+    background-color: var(--color-secondary-lighter);
     cursor: pointer;
   }
 </style>
