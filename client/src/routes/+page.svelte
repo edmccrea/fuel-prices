@@ -2,6 +2,7 @@
   import type { MappedFuelData } from "./+layout";
   import Button from "$lib/Button.svelte";
   import PriceTable from "$lib/PriceTable.svelte";
+  import LineGraph from "$lib/LineGraph.svelte";
   const fuelTypes = [
     { displayName: "95", databaseName: "petrol" },
     { displayName: "Diesel", databaseName: "diesel" },
@@ -20,7 +21,7 @@
   export let data: MappedFuelData;
 </script>
 
-<section>
+<div class="main">
   <div class="title">
     <h1>Drivmedel Priser <span>Nu</span></h1>
     <p>
@@ -30,23 +31,25 @@
 
   <div class="table-buttons">
     {#each fuelTypes as fuelType}
-      <Button on:click={() => changeCurrentFuelType(fuelType.databaseName)}
+      <Button
+        selected={fuelType.databaseName === currentFuelType}
+        on:click={() => changeCurrentFuelType(fuelType.databaseName)}
         >{fuelType.displayName}</Button
       >
     {/each}
   </div>
   <PriceTable {currentFuelType} fuelData={data} />
-</section>
+  <LineGraph fuelData={data} {currentFuelType} />
+</div>
 
 <style>
-  section {
+  .main {
     max-width: 960px;
     margin: 0 auto;
-    min-height: calc(100vh - 180px);
   }
 
   .title {
-    margin: 3rem 0 2rem;
+    padding: 2rem 0;
   }
 
   h1 {

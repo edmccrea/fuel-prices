@@ -14,6 +14,14 @@
   --color-secondary: #ff8717;
   --color-secondary-light: #ff871726;
   --color-light-grey: #f8f8f8;
+  --color-grey: #eae5e5;
+  --color-success: #198754;
+  --color-error: #dc3545;
+
+  --color-circlek: #da291c;
+  --color-preem: #01823b;
+  --color-ingo: #ff7000;
+  --color-okq8: #20419a;
 }
 
 * {
