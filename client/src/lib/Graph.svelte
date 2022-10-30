@@ -81,11 +81,12 @@
           responsive: true,
           elements: {
             point: {
-              radius: 1,
+              radius: 0.5,
             },
             line: {
               borderCapStyle: "round",
               tension: 0.1,
+              borderWidth: 2,
             },
           },
         },

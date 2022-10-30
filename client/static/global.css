@@ -13,6 +13,7 @@
 
   --color-secondary: #ff8717;
   --color-secondary-light: #ff871726;
+  --color-secondary-lighter: #ff87170f;
   --color-light-grey: #f8f8f8;
   --color-grey: #eae5e5;
   --color-success: #198754;
@@ -34,6 +35,10 @@
 a {
   color: inherit;
   text-decoration: none;
+}
+
+p {
+  font-weight: 200;
 }
 
 button {

@@ -77,11 +77,15 @@
 </section>
 
 <style>
+  section {
+    margin: 1rem 0;
+  }
   h2 {
     padding-top: 1rem;
   }
 
   .timescale-buttons {
     display: flex;
+    margin: 1rem 0;
   }
 </style>

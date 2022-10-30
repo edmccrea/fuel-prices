@@ -1,5 +1,5 @@
 <nav>
-  <a href="/">Logo</a>
+  <a href="/" class="logo">Nu</a>
   <a href="/about">Om</a>
 </nav>
 
@@ -16,5 +16,10 @@
   a {
     margin: 0 1rem;
     padding: 1rem;
+  }
+
+  .logo {
+    color: var(--color-secondary);
+    font-weight: 500;
   }
 </style>
