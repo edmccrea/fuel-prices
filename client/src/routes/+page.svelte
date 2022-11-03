@@ -62,5 +62,6 @@
 
   .table-buttons {
     display: flex;
+    overflow-x: auto;
   }
 </style>
