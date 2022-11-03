@@ -61,6 +61,9 @@
 </section>
 
 <style>
+  section {
+    overflow-x: auto;
+  }
   table {
     margin: 1rem 0;
     border-collapse: collapse;

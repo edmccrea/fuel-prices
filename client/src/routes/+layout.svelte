@@ -14,6 +14,5 @@
   section {
     min-height: calc(100vh - 120px);
     padding: 0 1rem;
-    overflow-x: auto;
   }
 </style>
